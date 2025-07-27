@@ -1,0 +1,59 @@
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+button {
+  font-size: 1.2em;
+}
+
+    </style>
+  </head>
+  <body>
+    <p style="text-align: center"><button id="run">run</button>&#160;<button id="end">end</button></p>
+    <script type="module">
+
+//--------------------------------------------------------------------------
+
+import { UrlPrm, UrlLib, UrlAud } from './params.js';
+
+(
+  async () => {
+    const { PrmCmm, PrmSnd, PrmRcv } = await import(UrlPrm);
+    const { SndVce, SwtImg } = await import(UrlLib);
+
+//--------------------------------------------------------------------------
+
+const sndvce = new SndVce(PrmSnd.adrsnd, PrmSnd.thdvce, PrmSnd.mscend, UrlAud);
+const rcvvce = new SwtImg(PrmRcv.adrrcv, PrmRcv.thdvce, PrmRcv.adrswc, PrmRcv.adrchr, PrmRcv.imgchr, PrmRcv.arrimg, PrmRcv.sclimg, PrmRcv.poscox, PrmRcv.poscoy);
+
+const launch = async () => {
+  await sndvce.iniAud();
+  sndvce.updAud();
+  rcvvce.updAud();
+  while (true) {
+    await sndvce.recVce();
+    await rcvvce.swtChr();
+    await rcvvce.plyVce();
+    await new Promise(r => setTimeout(r, PrmCmm.mscchk));
+  }
+}
+
+const finish = () => {
+  sndvce.updAud();
+  rcvvce.updAud();
+  sndvce.endAud();
+}
+
+document.getElementById('run').addEventListener('click', launch);
+document.getElementById('end').addEventListener('click', finish);
+
+//--------------------------------------------------------------------------
+
+}
+)();
+
+    </script>
+  </body>
+</html>
