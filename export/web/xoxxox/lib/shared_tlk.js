@@ -356,13 +356,13 @@ export const SwtImg = class {
         if (objres.ok) {
           //console.log('sts: swtChr: if: fetch'); // DBG
           const imgchr = await objres.text();
-          if (imgchr != ImgOld.imgchr) {
+          //if (imgchr != ImgOld.imgchr) {
             //console.log('sts: swtChr: if: fetch' + imgchr); // DBG
             this.img001 = this.adrchr.replace('<c>', imgchr).replace('<m>', 'c');
             this.img002 = this.adrchr.replace('<c>', imgchr).replace('<m>', 'o');
             //this.imgtgt.src = this.img001;
             ImgOld.imgchr = imgchr;
-          }
+          //}
         }
       }
       catch (e) {
