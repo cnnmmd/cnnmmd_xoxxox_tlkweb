@@ -310,16 +310,14 @@ export const SwtImg = class {
     // 音声のコンテキストを作成
     this.ctxaud = new (window.AudioContext || window.webkitAudioContext)();
 
-    // スタイルを設定（CSS ）
+    // 画像を作成（img ）
     if (! this.keyimg) {
-      // 画像を作成（img ）
       this.keyimg = document.createElement('img');
       this.keyimg.id = 'keyimg'; // 画像のＩＤ
       this.keyimg.src = this.img001;
-      //document.body.appendChild(this.keyimg);
+      document.body.appendChild(this.keyimg);
       //this.keyimg = document.getElementById('keyimg');
       this.arrImg(this.keyimg); // 画像の配置方法を設定
-      //this.appImg(this.keyimg);
       this.keyimg.onload = ()=> this.appImg(this.keyimg); // 画像を表示
       ImgOld.imgchr = this.imgchr;
       ImgOld.arrimg = this.arrimg;
