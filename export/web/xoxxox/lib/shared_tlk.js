@@ -315,7 +315,7 @@ export const SwtImg = class {
       this.keyimg = document.createElement('img');
       this.keyimg.id = 'keyimg'; // 画像のＩＤ
       document.body.appendChild(this.keyimg);
-      this.keyimg = document.getElementById('keyimg');
+      //this.keyimg = document.getElementById('keyimg');
       this.keyimg.src = this.img001;
       this.arrImg(this.keyimg); // 画像の配置方法を設定
       this.keyimg.onload = ()=> this.appImg(this.keyimg); // 画像を表示
