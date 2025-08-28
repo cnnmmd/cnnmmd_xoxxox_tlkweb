@@ -318,7 +318,8 @@ export const SwtImg = class {
       this.keyimg = document.getElementById('keyimg');
       this.keyimg.src = this.img001;
       this.arrImg(this.keyimg); // 画像の配置方法を設定
-      this.keyimg.onload = ()=> this.appImg(this.keyimg); // 画像を表示
+      this.appImg(this.keyimg); // 画像を表示
+      //this.keyimg.onload = ()=> this.appImg(this.keyimg); // 画像を表示
       ImgOld.imgchr = this.imgchr;
       ImgOld.arrimg = this.arrimg;
       ImgOld.sclimg = this.sclimg;
