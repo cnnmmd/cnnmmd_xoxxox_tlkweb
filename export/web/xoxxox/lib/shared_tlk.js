@@ -411,8 +411,7 @@ export const SwtImg = class {
           }
 
           // 次のフレームで再度検査
-          //requestAnimationFrame(chkVol);
-          chkVol();
+          requestAnimationFrame(chkVol);
         };
 
         source.start(0);
