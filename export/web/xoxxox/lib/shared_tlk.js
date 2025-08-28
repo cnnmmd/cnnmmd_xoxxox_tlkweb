@@ -333,8 +333,8 @@ export const SwtImg = class {
     if (this.keyimg) {
       if (this.arrimg != ImgOld.arrimg || this.sclimg != ImgOld.sclimg || this.poscox != ImgOld.poscox || this.poscoy != ImgOld.poscoy ) {
         this.arrImg(this.keyimg); // 画像の配置方法を設定
-        this.keyimg.onload = ()=> this.appImg(this.keyimg); // 画像を表示
-        //this.appImg(this.keyimg); // 画像を表示
+        //this.keyimg.onload = ()=> this.appImg(this.keyimg); // 画像を表示
+        this.appImg(this.keyimg); // 画像を表示
         ImgOld.arrimg = this.arrimg;
         ImgOld.sclimg = this.sclimg;
         ImgOld.poscox = this.poscox;
@@ -451,9 +451,11 @@ export const SwtImg = class {
     img.style.transform = 'scale(' + imgscl + ')'; // スケール
     img.style.bottom = (winhgt * this.poscoy) + 'px'; // 上下の配置
     if (this.arrimg == 'l') {
+      img.style.right = 'auto';
       img.style.left = (winwth * this.poscox) + 'px'; // 左右の配置
     }
     if (this.arrimg == 'r') {
+      img.style.left = 'auto';
       img.style.right = (winwth * this.poscox) + 'px'; // 左右の配置
     }
     if (this.arrimg == 'c') {
