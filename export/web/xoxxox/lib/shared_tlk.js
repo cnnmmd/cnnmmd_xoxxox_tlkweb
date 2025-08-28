@@ -423,7 +423,6 @@ export const SwtImg = class {
       console.error('err: ', e);
       alert('err: ' + e);
     }
-    this.appImg(this.keyimg);
   }
 
   // 画像を配置
