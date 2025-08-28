@@ -409,9 +409,7 @@ export const SwtImg = class {
         };
 
         source.start(0);
-        window.addEventListener("DOMContentLoaded", () => {
-          chkVol();
-        });
+        chkVol();
       }
       else {
         alert('err: ' + objres.statusText);
