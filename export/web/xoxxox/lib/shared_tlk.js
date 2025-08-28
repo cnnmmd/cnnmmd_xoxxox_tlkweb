@@ -388,8 +388,8 @@ export const SwtImg = class {
         source.connect(anaaud);
         anaaud.connect(this.ctxaud.destination);
 
-        let flgvce = false;
         // 音量を検査
+        let flgvce = false;
         const chkVol = () => {
           anaaud.getByteTimeDomainData(arrdat);
           let sumsqu = 0;
@@ -398,7 +398,6 @@ export const SwtImg = class {
             sumsqu += norvol * norvol;
           }
           const numrms = Math.sqrt(sumsqu / lenbuf); // 計算（RMS ）
-
           // 閾値と比較し〜画像を切り替え
           if (numrms > this.thdvol && !flgvce) {
             //console.log(1); // DBG
@@ -409,13 +408,13 @@ export const SwtImg = class {
             this.keyimg.src = this.img001; // 画像＃１
             flgvce = false;
           }
-
           // 次のフレームで再度検査
           requestAnimationFrame(chkVol);
         };
 
         source.start(0);
         chkVol();
+        this.appImg(this.keyimg);
       }
       else {
         alert('err: ' + objres.statusText);
