@@ -311,8 +311,10 @@ export const SwtImg = class {
     this.ctxaud = new (window.AudioContext || window.webkitAudioContext)();
 
     // スタイルを設定（CSS ）
-    this.keyimg = document.getElementById('keyimg');
-    this.keyimg.src = this.img001;
+    window.addEventListener("DOMContentLoaded", () => {
+      this.keyimg = document.getElementById("keyimg");
+      this.keyimg.src = this.img001;
+    });
     /*
     if (! this.keyimg) {
       // 画像を作成（img ）
