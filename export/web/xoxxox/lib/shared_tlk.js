@@ -311,20 +311,13 @@ export const SwtImg = class {
     this.ctxaud = new (window.AudioContext || window.webkitAudioContext)();
 
     // スタイルを設定（CSS ）
-    window.addEventListener("DOMContentLoaded", () => {
-      this.keyimg = document.getElementById("keyimg");
-      this.keyimg.src = this.img001;
-    });
-    /*
     if (! this.keyimg) {
       // 画像を作成（img ）
-      this.imgtgt = document.createElement('img');
-      this.imgtgt.src = this.img001;
-      this.imgtgt.id = 'keyimg'; // 画像のＩＤ
-
-      // 画像を追加（img ）
-      document.body.appendChild(this.imgtgt);
-      this.keyimg = document.getElementById('keyimg');
+      this.keyimg = document.createElement('img');
+      this.keyimg.src = this.img001;
+      this.keyimg.id = 'keyimg'; // 画像のＩＤ
+      document.body.appendChild(this.keyimg);
+      //this.keyimg = document.getElementById('keyimg');
       this.arrImg(this.keyimg); // 画像の配置方法を設定
       this.keyimg.onload = ()=> this.appImg(this.keyimg); // 画像を表示
       ImgOld.imgchr = this.imgchr;
@@ -333,7 +326,6 @@ export const SwtImg = class {
       ImgOld.poscox = this.poscox;
       ImgOld.poscoy = this.poscoy;
     }
-    */
 
     if (this.keyimg) {
       if (this.arrimg != ImgOld.arrimg || this.sclimg != ImgOld.sclimg || this.poscox != ImgOld.poscox || this.poscoy != ImgOld.poscoy ) {
