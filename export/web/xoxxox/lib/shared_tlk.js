@@ -414,7 +414,6 @@ export const SwtImg = class {
 
         source.start(0);
         chkVol();
-        this.appImg(this.keyimg);
       }
       else {
         alert('err: ' + objres.statusText);
@@ -424,6 +423,7 @@ export const SwtImg = class {
       console.error('err: ', e);
       alert('err: ' + e);
     }
+    this.appImg(this.keyimg);
   }
 
   // 画像を配置
