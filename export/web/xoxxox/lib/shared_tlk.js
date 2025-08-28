@@ -314,12 +314,13 @@ export const SwtImg = class {
     if (! this.keyimg) {
       // 画像を作成（img ）
       this.keyimg = document.createElement('img');
-      this.keyimg.src = this.img001;
       this.keyimg.id = 'keyimg'; // 画像のＩＤ
-      document.body.appendChild(this.keyimg);
+      this.keyimg.src = this.img001;
+      //document.body.appendChild(this.keyimg);
       //this.keyimg = document.getElementById('keyimg');
       this.arrImg(this.keyimg); // 画像の配置方法を設定
-      this.keyimg.onload = ()=> this.appImg(this.keyimg); // 画像を表示
+      this.appImg(this.keyimg);
+      //this.keyimg.onload = ()=> this.appImg(this.keyimg); // 画像を表示
       ImgOld.imgchr = this.imgchr;
       ImgOld.arrimg = this.arrimg;
       ImgOld.sclimg = this.sclimg;
