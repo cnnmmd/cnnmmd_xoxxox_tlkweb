@@ -333,7 +333,6 @@ export const SwtImg = class {
     if (this.keyimg) {
       if (this.arrimg != ImgOld.arrimg || this.sclimg != ImgOld.sclimg || this.poscox != ImgOld.poscox || this.poscoy != ImgOld.poscoy ) {
         this.arrImg(this.keyimg); // 画像の配置方法を設定
-        //this.keyimg.onload = ()=> this.appImg(this.keyimg); // 画像を表示
         this.appImg(this.keyimg); // 画像を表示
         ImgOld.arrimg = this.arrimg;
         ImgOld.sclimg = this.sclimg;
@@ -412,7 +411,7 @@ export const SwtImg = class {
           }
 
           // 次のフレームで再度検査
-          requestAnimationFrame(chkVol);
+          //requestAnimationFrame(chkVol);
         };
 
         source.start(0);
@@ -437,9 +436,6 @@ export const SwtImg = class {
     if (this.arrimg == 'r') {
       img.style.transformOrigin = 'bottom right';
     }
-    if (this.arrimg == 'c') {
-      img.style.transformOrigin = 'bottom left';
-    }
   }
 
   // 画像を配置
@@ -457,9 +453,6 @@ export const SwtImg = class {
     if (this.arrimg == 'r') {
       img.style.left = 'auto';
       img.style.right = (winwth * this.poscox) + 'px'; // 左右の配置
-    }
-    if (this.arrimg == 'c') {
-      img.style.left = ((winwth * this.poscox) - ((img.naturalWidth * imgscl) / 2)) + 'px'; // 左右の配置
     }
   }
 
