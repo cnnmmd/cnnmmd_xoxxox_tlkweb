@@ -415,7 +415,7 @@ export const SwtImg = class {
         };
 
         source.start(0);
-        //chkVol();
+        chkVol();
       }
       else {
         alert('err: ' + objres.statusText);
