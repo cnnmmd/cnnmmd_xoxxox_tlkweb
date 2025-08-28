@@ -312,6 +312,8 @@ export const SwtImg = class {
 
     // スタイルを設定（CSS ）
     this.keyimg = document.getElementById('keyimg');
+    this.keyimg.src = this.img001;
+    /*
     if (! this.keyimg) {
       // 画像を作成（img ）
       this.imgtgt = document.createElement('img');
@@ -329,6 +331,7 @@ export const SwtImg = class {
       ImgOld.poscox = this.poscox;
       ImgOld.poscoy = this.poscoy;
     }
+    */
 
     if (this.keyimg) {
       if (this.arrimg != ImgOld.arrimg || this.sclimg != ImgOld.sclimg || this.poscox != ImgOld.poscox || this.poscoy != ImgOld.poscoy ) {
