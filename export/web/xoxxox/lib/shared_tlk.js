@@ -310,17 +310,13 @@ export const SwtImg = class {
     // 音声のコンテキストを作成
     this.ctxaud = new (window.AudioContext || window.webkitAudioContext)();
 
-    // スタイルを設定（CSS ）
-    this.keyimg = document.getElementById('keyimg');
+    // 画像を作成（img ）
     if (! this.keyimg) {
-      // 画像を作成（img ）
-      this.imgtgt = document.createElement('img');
-      this.imgtgt.src = this.img001;
-      this.imgtgt.id = 'keyimg'; // 画像のＩＤ
-
-      // 画像を追加（img ）
-      document.body.appendChild(this.imgtgt);
+      this.keyimg = document.createElement('img');
+      this.keyimg.id = 'keyimg'; // 画像のＩＤ
+      document.body.appendChild(this.keyimg);
       this.keyimg = document.getElementById('keyimg');
+      this.keyimg.src = this.img001;
       this.arrImg(this.keyimg); // 画像の配置方法を設定
       this.keyimg.onload = ()=> this.appImg(this.keyimg); // 画像を表示
       ImgOld.imgchr = this.imgchr;
@@ -333,7 +329,7 @@ export const SwtImg = class {
     if (this.keyimg) {
       if (this.arrimg != ImgOld.arrimg || this.sclimg != ImgOld.sclimg || this.poscox != ImgOld.poscox || this.poscoy != ImgOld.poscoy ) {
         this.arrImg(this.keyimg); // 画像の配置方法を設定
-        this.keyimg.onload = ()=> this.appImg(this.keyimg); // 画像を表示
+        this.appImg(this.keyimg); // 画像を表示
         ImgOld.arrimg = this.arrimg;
         ImgOld.sclimg = this.sclimg;
         ImgOld.poscox = this.poscox;
@@ -388,8 +384,8 @@ export const SwtImg = class {
         source.connect(anaaud);
         anaaud.connect(this.ctxaud.destination);
 
-        let flgvce = false;
         // 音量を検査
+        let flgvce = false;
         const chkVol = () => {
           anaaud.getByteTimeDomainData(arrdat);
           let sumsqu = 0;
@@ -398,7 +394,6 @@ export const SwtImg = class {
             sumsqu += norvol * norvol;
           }
           const numrms = Math.sqrt(sumsqu / lenbuf); // 計算（RMS ）
-
           // 閾値と比較し〜画像を切り替え
           if (numrms > this.thdvol && !flgvce) {
             //console.log(1); // DBG
@@ -409,7 +404,6 @@ export const SwtImg = class {
             this.keyimg.src = this.img001; // 画像＃１
             flgvce = false;
           }
-
           // 次のフレームで再度検査
           requestAnimationFrame(chkVol);
         };
@@ -436,9 +430,6 @@ export const SwtImg = class {
     if (this.arrimg == 'r') {
       img.style.transformOrigin = 'bottom right';
     }
-    if (this.arrimg == 'c') {
-      img.style.transformOrigin = 'bottom left';
-    }
   }
 
   // 画像を配置
@@ -450,13 +441,12 @@ export const SwtImg = class {
     img.style.transform = 'scale(' + imgscl + ')'; // スケール
     img.style.bottom = (winhgt * this.poscoy) + 'px'; // 上下の配置
     if (this.arrimg == 'l') {
+      img.style.right = 'auto';
       img.style.left = (winwth * this.poscox) + 'px'; // 左右の配置
     }
     if (this.arrimg == 'r') {
+      img.style.left = 'auto';
       img.style.right = (winwth * this.poscox) + 'px'; // 左右の配置
-    }
-    if (this.arrimg == 'c') {
-      img.style.left = ((winwth * this.poscox) - ((img.naturalWidth * imgscl) / 2)) + 'px'; // 左右の配置
     }
   }
 
